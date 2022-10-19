@@ -1,0 +1,444 @@
+{
+	"info": {
+		"_postman_id": "e19832ec-ac01-426e-98ad-25a1788055f7",
+		"name": "StarWars Blog",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14372543"
+	},
+	"item": [
+		{
+			"name": "Users CRUD",
+			"item": [
+				{
+					"name": "Add New User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\":\"value\", \"password\":\"value\", \"first_name\":\"value\", \"last_name\":\"value\",\r\n\"email\":\"value\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "<serverURL>/users/new",
+							"host": [
+								"<serverURL>"
+							],
+							"path": [
+								"users",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "<serverURL>/users/",
+							"host": [
+								"<serverURL>"
+							],
+							"path": [
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "<serverURL>/user/id",
+							"host": [
+								"<serverURL>"
+							],
+							"path": [
+								"user",
+								"id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete One User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "<serverURL>/users/delete/id",
+							"host": [
+								"<serverURL>"
+							],
+							"path": [
+								"users",
+								"delete",
+								"id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put One User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\":\"value\", \"password\":\"value\", \"first_name\":\"value\", \"last_name\":\"value\",\r\n\"email\":\"value\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "<serverURL>/users/update/id",
+							"host": [
+								"<serverURL>"
+							],
+							"path": [
+								"users",
+								"update",
+								"id"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bookmarks CRUD",
+			"item": [
+				{
+					"name": "Add New Bookmark",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"user_id\":\"value\", \"character_id\":\"value\", \"planet_id\": \"value\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "<serverURL>/users/bookmarks/new",
+							"host": [
+								"<serverURL>"
+							],
+							"path": [
+								"users",
+								"bookmarks",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All User's Bookmarks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "<serverURL>/user/id/bookmarks",
+							"host": [
+								"<serverURL>"
+							],
+							"path": [
+								"user",
+								"id",
+								"bookmarks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One User's Bookmark",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "<serverURL>/user/id/bookmark/id",
+							"host": [
+								"<serverURL>"
+							],
+							"path": [
+								"user",
+								"id",
+								"bookmark",
+								"id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete One Bookmark",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "<serverURL>/bookmarks/delete/id",
+							"host": [
+								"<serverURL>"
+							],
+							"path": [
+								"bookmarks",
+								"delete",
+								"id"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Characters CRUD",
+			"item": [
+				{
+					"name": "Add New Character",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"value\", \"birth_year\":\"value\", \"gender\":\"value\", \"height\":\"value\", \"skin_color\":\"value\",\r\n\"eye_color\":\"value\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "<serverURL>/characters/new",
+							"host": [
+								"<serverURL>"
+							],
+							"path": [
+								"characters",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Characters",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "<serverURL>/characters",
+							"host": [
+								"<serverURL>"
+							],
+							"path": [
+								"characters"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One Character",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "<serverURL>/character/id",
+							"host": [
+								"<serverURL>"
+							],
+							"path": [
+								"character",
+								"id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete One Character",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "<serverURL>/characters/delete/id",
+							"host": [
+								"<serverURL>"
+							],
+							"path": [
+								"characters",
+								"delete",
+								"id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put One Character",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"value\", \"birth_year\":\"value\", \"gender\":\"value\", \"height\":\"value\", \"skin_color\":\"value\",\r\n\"eye_color\":\"value\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "<serverURL>/characters/update/id",
+							"host": [
+								"<serverURL>"
+							],
+							"path": [
+								"characters",
+								"update",
+								"id"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Planets CRUD",
+			"item": [
+				{
+					"name": "Add New Planet",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"value\", \"climate\":\"value\", \"diameter\":\"value\", \"orbital_period\":\"value\", \"rotation_period\":\"value\",\r\n\"population\":\"value\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "<serverURL>/planets/new",
+							"host": [
+								"<serverURL>"
+							],
+							"path": [
+								"planets",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Planets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "<serverURL>/planets",
+							"host": [
+								"<serverURL>"
+							],
+							"path": [
+								"planets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One Planet",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "<serverURL>/planet/id",
+							"host": [
+								"<serverURL>"
+							],
+							"path": [
+								"planet",
+								"id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete One Planet",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "<serverURL>/planets/delete/id",
+							"host": [
+								"<serverURL>"
+							],
+							"path": [
+								"planets",
+								"delete",
+								"id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put One Planet",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"value\", \"climate\":\"value\", \"diameter\":\"value\", \"orbital_period\":\"value\", \"rotation_period\":\"value\",\r\n\"population\":\"value\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "<serverURL>/planets/update/id",
+							"host": [
+								"<serverURL>"
+							],
+							"path": [
+								"planets",
+								"update",
+								"id"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
