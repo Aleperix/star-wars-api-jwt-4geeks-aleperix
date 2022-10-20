@@ -10,6 +10,7 @@ from utils import APIException, generate_sitemap
 from admin import setup_admin
 from models import db, Users, Bookmarks, Characters, Planets
 import json
+from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required, JWTManager
 #from models import Person
 
 app = Flask(__name__)
@@ -384,6 +385,55 @@ def delete_planet(planet_id):
     response_body = {"message": "Planeta "+planet.name+" eliminado con éxito"}
     return jsonify(response_body), 200
            ##### Fin DELETE #####
+
+           ##### Inicio JWT #####
+
+# Setup the Flask-JWT-Extended extension
+app.config["JWT_SECRET_KEY"] = "super-secret"  # Change this!
+jwt = JWTManager(app)
+
+# Create a route to authenticate your users and return JWTs. The
+# create_access_token() function is used to actually generate the JWT.
+@app.route("/login", methods=["POST"])
+def login():
+    username = request.json.get("username", None)
+    password = request.json.get("password", None)
+
+    user = Users.query.filter_by(username=username).first()
+
+    if user is None:
+        raise APIException('Usuario o contraseña incorrectos', status_code=401)
+
+    if username != user.username or password != user.password:
+        raise APIException('Usuario o contraseña incorrectos', status_code=401)
+
+    access_token = create_access_token(identity=username)
+    response_body = {
+        "access_token": access_token,
+        "user": user.serialize()
+    }
+    return jsonify(response_body)
+
+
+# Protect a route with jwt_required, which will kick out requests
+# without a valid JWT present.
+@app.route("/profile", methods=["GET"])
+@jwt_required()
+def protected():
+    # Access the identity of the current user with get_jwt_identity
+    current_user = get_jwt_identity()
+
+    user = Users.query.filter_by(username=current_user).first()
+
+    if user is None:
+        raise APIException('No tienes permitido estar aquí', status_code=401)
+
+    response_body = {
+        "user": user.serialize()
+    }
+    return jsonify(response_body), 200
+
+           ##### Fin JWT #####
 
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':

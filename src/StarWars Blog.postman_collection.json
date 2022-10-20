@@ -118,6 +118,59 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\":\"Aleperix\",\"password\":\"1234\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "<serverURL>/login",
+							"host": [
+								"<serverURL>"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Profile Data",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY2NjI3NzQzMiwianRpIjoiZWFhMTM3MjItZjc1OC00YzE5LTk5ZjgtNzNjMTIyNzUyMTNlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IkFsZXBlcml4IiwibmJmIjoxNjY2Mjc3NDMyLCJleHAiOjE2NjYyNzgzMzJ9.57chT4aynfHBTpjWFu0xR-jaQqLGJK1RWeAswgXSD7I",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "<serverURL>/profile",
+							"host": [
+								"<serverURL>"
+							],
+							"path": [
+								"profile"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
