@@ -61,7 +61,7 @@ def add_new_user():
     raise APIException('Ya existe un usuario con ese email', status_code=403)
 
 #Creamos un nuevo favorito
-@app.route('/users/bookmarks/new', methods=['POST'])
+@app.route('/user/bookmarks/new', methods=['POST'])
 def add_new_bookmark():
     body = json.loads(request.data)
     user_exist = Bookmarks.query.filter_by(user_id=body["user_id"]).first()
@@ -402,7 +402,7 @@ def login():
     user = Users.query.filter_by(username=username).first()
 
     if user is None:
-        raise APIException('Usuario o contraseña incorrectos', status_code=401)
+        raise APIException('El usuario ingresado no existe', status_code=401)
 
     if username != user.username or password != user.password:
         raise APIException('Usuario o contraseña incorrectos', status_code=401)
@@ -419,20 +419,26 @@ def login():
 # without a valid JWT present.
 @app.route("/profile", methods=["GET"])
 @jwt_required()
-def protected():
+def profile():
     # Access the identity of the current user with get_jwt_identity
     current_user = get_jwt_identity()
 
     user = Users.query.filter_by(username=current_user).first()
 
     if user is None:
-        raise APIException('No tienes permitido estar aquí', status_code=401)
+        raise APIException('No tienes permitido hacer esto', status_code=401)
 
     response_body = {
         "user": user.serialize()
     }
     return jsonify(response_body), 200
 
+# Protect a route with jwt_required, which will kick out requests
+# without a valid JWT present.
+@app.route("/isauth", methods=["GET"])
+@jwt_required()
+def is_auth():
+    return jsonify(get_jwt_identity()), 200
            ##### Fin JWT #####
 
 # this only runs if `$ python src/main.py` is executed
