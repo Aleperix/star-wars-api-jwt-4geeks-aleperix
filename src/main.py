@@ -72,12 +72,14 @@ def add_new_bookmark():
         raise APIException('El usuario no existe', status_code=404)
 
     if body["character_id"] != None:
-        if character_exist.character_id == int(body["character_id"]):
-            raise APIException('El usuario ya tiene ese personaje como favorito', status_code=403)
+        if character_exist != None:
+            if character_exist.character_id == int(body["character_id"]):
+                raise APIException('El usuario ya tiene ese personaje como favorito', status_code=403)
 
     if body["planet_id"] != None:
-        if planet_exist.planet_id == int(body["planet_id"]):
-            raise APIException('El usuario ya tiene ese planeta como favorito', status_code=403)
+        if planet_exist != None:
+            if planet_exist.planet_id == int(body["planet_id"]):
+                raise APIException('El usuario ya tiene ese planeta como favorito', status_code=403)
 
     new_user_bookmark = Bookmarks(
         user_id=body["user_id"],
